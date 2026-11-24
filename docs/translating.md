@@ -1,8 +1,8 @@
 # Adding a Language
 
-Cutefish is written in US English. The project maintains ten catalogs
-itself: `es`, `pt_BR`, `fr`, `de`, `ru`, `ja`, `ko`, `it`, `zh_CN` and
-`zh_TW`. A wrong translation in one of them is corrected by a pull request
+Cutefish is written in US English. The project maintains sixteen catalogs
+itself: `es`, `pt_BR`, `fr`, `de`, `ru`, `ja`, `ko`, `it`, `zh_CN`, `zh_TW`,
+`zh_HK`, `pl`, `cs`, `id`, `vi` and `ms`. A wrong translation in one of them is corrected by a pull request
 against `po/<code>.po`; later updates keep the correction. Any other
 language comes in as a pull request, one per repository, and is welcome
 whether a person or an agent wrote it. The text lives in gettext catalogs:
@@ -23,6 +23,9 @@ whether a person or an agent wrote it. The text lives in gettext catalogs:
 | system-monitor | `po/cutefish-system-monitor.pot` |
 | calculator | `po/cutefish-calculator.pot` |
 | preview | `po/cutefish-preview.pot` |
+| clock | `po/cutefish-clock.pot` |
+| disk-utility | `po/cutefish-disk-utility.pot` |
+| cutefish-installer | `po/cutefish-installer.pot` |
 
 A language is `po/<code>.po` next to the template: `ja.po`, `de.po`, or
 with a territory where it matters, `zh_CN.po`, `zh_TW.po`, `pt_BR.po`. The
