@@ -33,6 +33,8 @@ equivalents.
 | [video-player](https://github.com/cutefishos/video-player) | Optional | Video player |
 | [calendar](https://github.com/cutefishos/calendar) | Optional | Calendar |
 | [calculator](https://github.com/cutefishos/calculator) | Optional | Calculator |
+| [clock](https://github.com/cutefishos/clock) | Optional | World clock, alarms, stopwatch and timers |
+| [disk-utility](https://github.com/cutefishos/disk-utility) | Optional | Disks, partitions, volumes and disk images |
 | [preview](https://github.com/cutefishos/preview) | Optional | Image and PDF viewer |
 | [system-monitor](https://github.com/cutefishos/system-monitor) | Optional | System monitor |
 | [cutefish-computer-use](https://github.com/cutefishos/cutefish-computer-use) | Optional | MCP server that lets agents such as Claude Code and Codex see and use the desktop, with your permission |
@@ -91,6 +93,8 @@ Add these for the optional components you want:
 | video-player | `libmpv-dev` |
 | calendar | `libcurl4-openssl-dev libical-dev` |
 | calculator | none beyond the list above |
+| clock | none beyond the list above |
+| disk-utility | none beyond the list above |
 | preview | none beyond the list above |
 | system-monitor | none beyond the list above |
 | cutefish-computer-use | `rustc cargo librust-wayland-client-dev librust-wayland-scanner-dev librust-wayland-protocols-dev librust-wayland-backend-dev librust-serde-json-dev librust-png-dev librust-jpeg-encoder-dev librust-base64-dev librust-bitflags-dev librust-libc-dev librust-memmap2-dev` |
@@ -107,8 +111,8 @@ want.
 mkdir -p ~/cutefish && cd ~/cutefish
 for repo in cutefish-toolkit cutefish-framework cutefish-core cutefish-compositor \
     filemanager icons wallpapers settings terminal xdg-desktop-portal-cutefish \
-    cutefish-dm qt-plugins text-editor video-player calendar calculator preview \
-    system-monitor cutefish-computer-use; do
+    cutefish-dm qt-plugins text-editor video-player calendar calculator clock \
+    disk-utility preview system-monitor cutefish-computer-use; do
     git clone https://github.com/cutefishos/$repo.git
 done
 ```
@@ -181,8 +185,8 @@ installed CMake packages.
 cd ~/cutefish
 for repo in cutefish-toolkit cutefish-framework qt-plugins icons cutefish-core \
     cutefish-dm filemanager terminal xdg-desktop-portal-cutefish settings \
-    system-monitor text-editor video-player calendar calculator preview \
-    cutefish-compositor wallpapers; do
+    system-monitor text-editor video-player calendar calculator clock disk-utility \
+    preview cutefish-compositor wallpapers; do
     [ -d "$repo" ] || continue
     cmake -S "$repo" -B "build/$repo" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTING=OFF || break
@@ -220,7 +224,9 @@ sudo apt install accountsservice polkitd gsettings-desktop-schemas xdg-user-dirs
 
 `xwayland` runs X11 applications; `adwaita-icon-theme` provides the fallback
 cursors; `locales` lets Cutefish generate the locale of a language picked in
-Settings, so its dates and numbers follow it too. `systemd-coredump` is recommended, so the crash dialog can show
+Settings, so its dates and numbers follow it too. Disk Utility formats with
+`e2fsprogs`, `exfatprogs`, `dosfstools`, `ntfs-3g`, `btrfs-progs` and
+`xfsprogs`; a format whose tools are missing is offered disabled. `systemd-coredump` is recommended, so the crash dialog can show
 what crashed.
 
 ## 5. Log in
